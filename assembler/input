@@ -1,0 +1,10 @@
+put 3;
+write A;
+write B;
+write C;
+write D;
+step;
+
+put 2;
+ifwrite B;
+step;
