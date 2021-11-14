@@ -92,6 +92,8 @@ void execute(COMPUTER* pComputer, Instruction* pInstructions, byte* ramBase, byt
     }
 }
 
+#include "instructions.h"
+
 int main() {
     Instruction i = { 1 };
     dumpInstructionState(&i);

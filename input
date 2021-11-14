@@ -1,0 +1,7 @@
+put 3;
+write OD;
+step;
+
+put 4;
+write OD;
+step;
