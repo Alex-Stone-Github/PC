@@ -92,10 +92,14 @@ void execute(COMPUTER* pComputer, Instruction* pInstructions, byte* ramBase, byt
     }
 }
 
-#include "instructions.h"
+#include "output.h"
 
 int main() {
-    Instruction i = { 1 };
-    dumpInstructionState(&i);
+    COMPUTER* computer = {0, 0, 0, 0, 0, 0, 255, 0};
+    byte RAM[256] = {0};
+
+    for (unsigned int i = 0; i < (sizeof(instrucions) / sizeof(Instruction)); i ++)
+        execute(computer, &instrucions, RAM, 0);
+
     return 0;
 }

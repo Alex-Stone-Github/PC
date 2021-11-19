@@ -99,5 +99,8 @@ def convertToBinary(text):
     return output
         
 
+instructions = None
 with open("input", "r") as f:
-    print(convertToBinary(f.read()))
+    instructions = convertToBinary(f.read())
+with open("output.h", "w") as f:
+    f.write(instructions)
