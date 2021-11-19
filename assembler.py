@@ -49,15 +49,16 @@ class Instruction:
         self.WPB = 0
     
     def __str__(self):
-        f1="{"
-        f2=f"{self.data}, {self.mode}, {self.COND}, "
-        f3=f"{self.RA}, {self.RB}, {self.RC}, {self.RD}, {self.RR}, {self.RID}, {self.RP}, "
-        f4=f"{self.WA}, {self.WB}, {self.WC}, {self.WD}, {self.WPC}, {self.WRA}, {self.WR}, {self.WOD}, {self.WPA}, {self.WPB}"
-        f5="}"
-        return f1 + f2 + f3 + f4 + f5
+        b = "{"
+        f1=f"{self.data}, {self.mode}, {self.COND}, "
+        f2=f"{self.RA}, {self.RB}, {self.RC}, {self.RD}, {self.RR}, {self.RID}, {self.RP}, "
+        f3=f"{self.WA}, {self.WB}, {self.WC}, {self.WD}, {self.WPC}, {self.WRA}, {self.WR}, {self.WOD}, {self.WPA}, {self.WPB}"
+        e = "}"
+        return b + f1 + f2 + f3 + e
 
 def convertToBinary(text):
-    output = "Instruction instrucions = {\n"
+    instructionCount = 0
+    output = "Instruction instrucions[] = {\n"
     instruction = Instruction()
     text = text.replace("\n", "")
     lines = text.split(";")
@@ -70,6 +71,7 @@ def convertToBinary(text):
         if command == "put":
             instruction.data = args[0]
         if command == "step":
+            instructionCount += 1
             output += str(instruction) + ",\n"
             instruction = Instruction()
         
@@ -95,7 +97,7 @@ def convertToBinary(text):
                 if arg == "RAM": instruction.RR = 1
                 if arg == "ID": instruction.RID = 1
                 if arg == "P": instruction.RP = 1
-    output += "};"
+    output += "};\nunsigned int EPOCHS = " + str(instructionCount) + ";"
     return output
         
 

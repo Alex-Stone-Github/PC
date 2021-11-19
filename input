@@ -1,7 +1,11 @@
-put 3;
+put 8;
 write OD;
 step;
 
 put 4;
+write OD;
+step;
+
+put 5;
 write OD;
 step;

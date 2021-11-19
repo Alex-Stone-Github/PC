@@ -95,11 +95,18 @@ void execute(COMPUTER* pComputer, Instruction* pInstructions, byte* ramBase, byt
 #include "output.h"
 
 int main() {
-    COMPUTER* computer = {0, 0, 0, 0, 0, 0, 255, 0};
+    COMPUTER computer = {0, 0, 0, 0, 0, 0, 255, 0};
     byte RAM[256] = {0};
 
-    for (unsigned int i = 0; i < (sizeof(instrucions) / sizeof(Instruction)); i ++)
-        execute(computer, &instrucions, RAM, 0);
+    for (int i = 0; i < EPOCHS; i ++){dumpInstructionState(instrucions + i);}printf("\n"); //Print the instructiosn before running
 
+    printf("+++++++++++++++++++++++++RUNNING+++++++++++++++++++++++++\n");
+    printf("+++++++++++++++++++++++++RUNNING+++++++++++++++++++++++++\n");
+    printf("+++++++++++++++++++++++++RUNNING+++++++++++++++++++++++++\n");
+    for (unsigned int i = 0; i < EPOCHS; i ++) {
+        computer.PC ++;
+        printf("INSTRUCTION: %d\n", computer.PC);
+        execute(&computer, (void*)&instrucions, RAM, 0);
+    }
     return 0;
 }
