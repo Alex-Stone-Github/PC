@@ -1,5 +1,5 @@
 # emulator & assembler
-===
+---
 This is a work in progress that is a custom computer and assembler.
 
 ## Purpose
