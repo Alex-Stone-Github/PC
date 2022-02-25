@@ -23,11 +23,17 @@ typedef enum INOUT {
     IO,         // not currently working
 } INOUT;
 
+typedef enum INSTYPE {
+    WRITE,
+    READ,
+} INSTYPE;
+
 typedef struct Token {
     TOK_TYPE type;
     union {
         int value;
-        INOUT name;
+        INOUT argname;
+        INSTYPE insname
     };
 } Token;
 
