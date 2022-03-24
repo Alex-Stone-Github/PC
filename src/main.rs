@@ -1,16 +1,19 @@
 use std::fs;
 
+mod generate;
+mod pre;
+mod parse;
+
 const PROGRAM_PATH: &str = "./res/testprogram.asm";
 
 
-fn preprocessing(code: &mut String) {
-    *code = code.replace("write", "out");
-}
-
 fn main() {
+    // read code in
     let mut code: String = fs::read_to_string(PROGRAM_PATH)
         .expect("Something went wrong reading in the program");
-    println!("{}", code);
-    preprocessing(&mut code);
-    println!("{}", code);
+    // do preprocessing on it
+    pre::preprocessing(&mut code);
+    let statements = parse::parse_code(&code);
+    println!("{:?}", statements);
+    generate::generate_binary_torch_layout(&statements);
 }   

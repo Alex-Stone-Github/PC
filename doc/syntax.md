@@ -31,7 +31,6 @@
 
 
 ## Examples
-
 ```assembly
 // write the number 3 to the first io port
 put 0;
