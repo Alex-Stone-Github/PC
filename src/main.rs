@@ -15,5 +15,6 @@ fn main() {
     pre::preprocessing(&mut code);
     let statements = parse::parse_code(&code);
     println!("{:?}", statements);
-    generate::generate_binary_torch_layout(&statements);
+    let torch_layout: Vec<String> = generate::generate_binary_torch_layout(&statements);
+    println!("{:?}", torch_layout);
 }   

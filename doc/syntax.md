@@ -5,8 +5,11 @@
 4. write [some Writable];                     = output something on the bus
 5. read [some Readable];                      = have some component read from the bus
 6. put [some number to put on the bus];       = put a number on the bus
+7. set [some setting]                         = change some setting on the processor for that instruction
 7. step;                                      = wrap up the instruction and begin the next one
 
+### Note
+Please note that comments can only contain spaces numbers and letters so no things like this ';'.
 
 ## Readables
 * processer
@@ -17,7 +20,7 @@
 * io
 * ram
 * address
-* instruction_counter
+
 
 ## Writables
 * io
@@ -28,6 +31,7 @@
 * d
 * processor_a
 * processor_b
+* instruction_counter
 
 
 ## Examples

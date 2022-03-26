@@ -13,12 +13,18 @@ pub enum ReadOrWriteNode {
     InstructionCounter
 }
 #[derive(Debug, Clone, PartialEq)]
+pub enum Setting {
+    DoSubtraction
+}
+#[derive(Debug, Clone, PartialEq)]
 pub enum Statement {
     If,
+    Set(Setting),
+    Put(u8),
     Write(ReadOrWriteNode),
     Read(ReadOrWriteNode),
-    Put(u8),
-    Step
+    Step,
+
 }
 
 impl ReadOrWriteNode {
@@ -55,6 +61,10 @@ pub fn parse_code(code: &String) -> Vec<Statement> {
             "write" => Statement::Write(ReadOrWriteNode::from_str(expressions[1])),
             "put" => Statement::Put(expressions[1].parse().expect("Expressions must be a number")),
             "step" => Statement::Step,
+            "set" => Statement::Set(match expressions[1] {
+                "sub" => Setting::DoSubtraction,
+                _ => {panic!("Not a valid setting");}
+            }),
             _ => {panic!("This is not a valid statement");}
         };
         statements.push(statement);
