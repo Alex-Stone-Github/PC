@@ -125,7 +125,7 @@ pub fn generate_binary_torch_layout(statements: &Vec<Statement>) -> Vec<String> 
         }
     }
     if !found_put {
-        torch_layout.iter_mut().for_each(|x| x.push_str("........"));
+        torch_layout.iter_mut().for_each(|x| x.push_str("00000000"));
     }
 
     assert_eq!(NUM_OF_CONTROL_LINES, torch_layout[0].len());

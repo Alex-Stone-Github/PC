@@ -8,9 +8,6 @@
 7. set [some setting]                         = change some setting on the processor for that instruction
 7. step;                                      = wrap up the instruction and begin the next one
 
-### Note
-Please note that comments can only contain spaces numbers and letters so no things like this ';'.
-
 ## Readables
 * processer
 * a
