@@ -19,6 +19,7 @@ fn main() {
 
     // run a lexer on the code
     let statements = parse::parse_code(&code);
+    println!("Hi there");
 
     // generate instructions from tokens
     let torch_layout: Vec<String> = generate::generate_binary_torch_layout(&statements);

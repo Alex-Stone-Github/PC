@@ -1,7 +1,7 @@
 # Syntax
 1. // COMMENTING                              = comment
 2. /* COMMENTING */                           = comment
-3. if;                                        = only execute this instruction if register d is not 0
+3. if;                                        = only execute this instruction if register d is 0 
 4. write [some Writable];                     = output something on the bus
 5. read [some Readable];                      = have some component read from the bus
 6. put [some number to put on the bus];       = put a number on the bus
@@ -30,6 +30,8 @@
 * processor_b
 * instruction_counter
 
+## Settings
+sub = setts the processor mode to subtraction
 
 ## Examples
 ```assembly

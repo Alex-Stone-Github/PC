@@ -48,12 +48,13 @@ impl ReadOrWriteNode {
 
 
 pub fn parse_code(code: &String) -> Vec<Statement> {
-    let statement_strings: Vec<String> = code.split(';').map(|x| x.into()).filter(|x| x != "").collect();
+    let statement_strings: Vec<String> = code.split(';').filter(|x| x.len() > 1).map(|x| x.into()).collect();
     let mut statements: Vec<Statement> = vec![];
     for statement_string in statement_strings.iter() {
-        let expressions: Vec<&str> = statement_string.split(' ').collect();
+        let expressions: Vec<&str> = statement_string.split(' ').filter(|x| x.len() != 0).collect();
+        println!("{:?}", expressions);
         if expressions.len() > 2 {
-            panic!("Expression is too long!")
+            panic!("Expression is too long!");
         }
         let statement: Statement = match expressions[0] {
             "if" => Statement::If,

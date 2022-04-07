@@ -16,7 +16,6 @@ fn u8_to_string_representation(number: u8) -> String {
 pub fn generate_binary_torch_layout(statements: &Vec<Statement>) -> Vec<String> {
     let mut torch_layout: Vec<String> = Vec::new();
     let instruction_statments: Vec<Vec<Statement>> = statements.split(|x| *x == Statement::Step).filter(|x| !x.is_empty()).map(|x| x.into()).collect();
-    let mut found_put: bool = false;
     for (i, instruction_statement) in instruction_statments.iter().enumerate() {
         torch_layout.push(String::new());
         if instruction_statement.contains(&Statement::If) {
@@ -115,6 +114,7 @@ pub fn generate_binary_torch_layout(statements: &Vec<Statement>) -> Vec<String> 
             torch_layout[i].push('0');
         }
         for statement in instruction_statement.iter() {
+            let mut found_put: bool = false;
             match statement {
                 Statement::Put(x) => {
                     found_put = true;
@@ -124,10 +124,6 @@ pub fn generate_binary_torch_layout(statements: &Vec<Statement>) -> Vec<String> 
             }
         }
     }
-    if !found_put {
-        torch_layout.iter_mut().for_each(|x| x.push_str("00000000"));
-    }
-
-    assert_eq!(NUM_OF_CONTROL_LINES, torch_layout[0].len());
+    //assert_eq!(NUM_OF_CONTROL_LINES, torch_layout[0].len());
     torch_layout
 }
